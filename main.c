@@ -37,6 +37,7 @@
 #include<stdlib.h>
 #include<grp.h>
 #include<errno.h>
+#include"version.h"
 
 void usage(void);
 
@@ -49,7 +50,7 @@ main(int argc, char **argv)
 	struct mode_t *mode;
 
 	if (argc < 2) {									// if no arguments are passed
-		printf("bjf shows detailed information about the specified file on the system.\n");
+		printf("bjf %s shows detailed information about the specified file on the system.\n", VERSION);
         	printf("usage: bjf <filename>\n");									 
 		//usage();								// show only usage message
 		return 0;								// and exit with code 0
@@ -95,6 +96,6 @@ main(int argc, char **argv)
 void 
 usage(void)
 {
-	printf("bjf shows detailed information about the specified file on the system.\n");
+	printf("bjf %s shows detailed information about the specified file on the system.\n", VERSION);
         printf("usage: bjf <filename>\n");
 }
