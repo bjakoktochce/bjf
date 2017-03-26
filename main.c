@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2016, Bartosz Jakoktochce, grypsy@gmail.com
+ * Copyright (c) 2017, Bartosz Jakoktochce, grypsy@gmail.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,17 +29,24 @@
  *
  */
  
-#include<sys/stat.h>
-#include<sys/types.h>
-#include<stdio.h>
-#include<pwd.h>
-#include<time.h>
-#include<stdlib.h>
-#include<grp.h>
-#include<errno.h>
-#include"version.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <pwd.h>
+#include <time.h>
+#include <stdlib.h>
+#include <grp.h>
+#include <errno.h>
 
-void usage(void);
+#include "version.h"
+
+void 
+usage(void);
+
+/*
+ * Main part of the program
+ *
+ */
 
 int 
 main(int argc, char **argv) 
@@ -93,6 +100,7 @@ main(int argc, char **argv)
 /*
  * Shows usage of the program
  */
+
 void 
 usage(void)
 {
