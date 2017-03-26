@@ -2,3 +2,27 @@ bjf
 
 This is small utility to display all neccessary informations of the file in one place.
 
+Utility shows in file section:
+
+1) filename
+2) size in bytes
+3) block size
+4) number of allocated blocks
+5) inode number
+6) number of hard links
+7) device id
+9) time of last access
+10) time of last modification
+11) time of last change
+
+and in user section:
+
+12) UID and GID of the owner
+13) name of the owner and name of the group
+14) gecos field
+15) home folder path
+16) user shell
+
+
+
+
