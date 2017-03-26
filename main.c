@@ -40,6 +40,10 @@
 
 #include "version.h"
 
+/*
+ * Declaration of functions
+ */
+
 void 
 usage(void);
 
@@ -57,15 +61,13 @@ main(int argc, char **argv)
 	struct mode_t *mode;
 
 	if (argc < 2) {									// if no arguments are passed
-		printf("bjf %s shows detailed information about the specified file on the system.\n", VERSION);
-        	printf("usage: bjf <filename>\n");									 
-		//usage();								// show only usage message
+		usage();								// show only usage message
 		return 0;								// and exit with code 0
 	}
 	else {
 
 		if (stat64(argv[1], &fs) == -1) {					// Check if the stat64() function return error (-1)
-			printf("bjf: %s: No such file or directory\n", argv[1]);			// write information to stdout
+			printf("bjf: %s: No such file or directory\n", argv[1]);	// write information to stdout
 			//fprintf(stderr, "%s\n", strerror(errno));			// 
 			return 0;							// and exit program with code 0
 		}
@@ -92,6 +94,8 @@ main(int argc, char **argv)
 			printf("shell: %s\n", pwd->pw_shell);
 	
 		}
+
+		// It's time to finish the program with exit code 0
 
 		return 0;
 	}
