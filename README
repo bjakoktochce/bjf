@@ -5,24 +5,24 @@ This is small utility to display all neccessary informations of the file in one 
 Utility shows in file section:
 
 1) filename
-2) size in bytes
-3) block size
-4) number of allocated blocks
-5) inode number
-6) number of hard links
-7) device id
+2) full path
+3) size in bytes
+4) block size
+5) number of allocated blocks
+6) inode number
+7) number of hard links
+8) device id
 9) time of last access
 10) time of last modification
 11) time of last change
+12) permissions
 
 and in user section:
 
-12) UID and GID of the owner
-13) name of the owner and name of the group
-14) gecos field
-15) home folder path
-16) user shell
-
-
+13) UID and GID of the owner
+14) name of the owner and name of the group
+15) gecos field
+16) home folder path
+17) user shell
 
 
