@@ -74,16 +74,16 @@ main(int argc, char **argv)
       		else {
 			printf("	-- detailed file information --\n");
 			printf("file: %s\n", argv[1]);
-			//printf("path: %s\n", getwd(argv[1]));
-			printf("size: %ld bytes\n", fs.st_size);
-			printf("block size: %ld\n", fs.st_blksize);
-			printf("number of blocks allocated: %ld\n", fs.st_blocks);
-			printf("inode number: %ld\n", fs.st_ino);
-			printf("number of hard links: %ld\n", fs.st_nlink);
+			printf("path: %s\n", get_current_dir_name());			// print current dir name
+			printf("size: %ld bytes\n", fs.st_size);			// size in bytes
+			printf("block size: %ld\n", fs.st_blksize);			// size of one block
+			printf("number of blocks allocated: %ld\n", fs.st_blocks);	// number of blocks
+			printf("inode number: %ld\n", fs.st_ino);			// inode number
+			printf("number of hard links: %ld\n", fs.st_nlink);		// number of hard links pointing to file
 			printf("device id: %ld\n", fs.st_dev);
-			printf("last accessed: %s", ctime(&fs.st_atime));	
-			printf("last modified: %s", ctime(&fs.st_mtime));
-			printf("last changed:  %s", ctime(&fs.st_ctime));
+			printf("last accessed: %s", ctime(&fs.st_atime));		// last access
+			printf("last modified: %s", ctime(&fs.st_mtime));		// last modify
+			printf("last changed:  %s", ctime(&fs.st_ctime));		// last change
 	
 			pwd=getpwuid(fs.st_uid);
 			grp=getgrgid(fs.st_gid);
