@@ -56,11 +56,11 @@ usage(void);
 int 
 main(int argc, char **argv) 
 {
-	struct stat fs;		// file stats
-	struct passwd *pwd;	// passwd struct
-	struct group *grp;	// group struct
-	struct mode_t *mode;
-	char buf[PATH_MAX + 1];
+	struct stat fs;			// file stats
+	struct passwd *pwd;		// passwd struct
+	struct group *grp;		// group struct
+	struct mode_t *mode;		// file permissions and mode
+	char buf[PATH_MAX + 1];		// buffer for real pathname
 
 	if (argc < 2) {									// if no arguments are passed
 		usage();								// show only usage message
@@ -68,26 +68,24 @@ main(int argc, char **argv)
 	}
 	else {
 
-		if (stat64(argv[1], &fs) == -1) {					// Check if the stat64() function return error (-1)
-			printf("bjf: %s: No such file or directory\n", argv[1]);	// write information to stdout
-			//fprintf(stderr, "%s\n", strerror(errno));			// 
-			return 0;							// and exit program with code 0
+		if (stat64(argv[1], &fs) == -1) {					// Check if the stat64() function returns error (-1)
+			perror(argv[1]);						// print error to stdout
+			return EXIT_FAILURE;						// and exit program with code 0
 		}
       		else {
 			printf("	-- detailed file information --\n");
-			printf("file: %s\n", argv[1]);
-			//printf("path: %s\n", get_current_dir_name());			// print current dir name
-			printf("path: %s\n", realpath(argv[1], buf));
-			printf("size: %ld bytes\n", fs.st_size);			// size in bytes
-			printf("block size: %ld\n", fs.st_blksize);			// size of one block
-			printf("number of blocks allocated: %ld\n", fs.st_blocks);	// number of blocks
-			printf("inode number: %ld\n", fs.st_ino);			// inode number
-			printf("number of hard links: %ld\n", fs.st_nlink);		// number of hard links pointing to file
+			printf("file: %s\n", argv[1]);								// print filename passed as argument
+			printf("path: %s\n", realpath(argv[1], buf));						// get and print real path of the file
+			printf("size: %ld bytes\n", fs.st_size);						// size in bytes
+			printf("block size: %ld\n", fs.st_blksize);						// size of one block
+			printf("number of blocks allocated: %ld\n", fs.st_blocks);				// number of blocks
+			printf("inode number: %ld\n", fs.st_ino);						// inode number
+			printf("number of hard links: %ld\n", fs.st_nlink);					// number of hard links pointing to file
 			printf("device id: %i (major) %i (minor)\n", major(fs.st_dev), minor(fs.st_dev));
-			printf("last accessed: %s", ctime(&fs.st_atime));		// last access
-			printf("last modified: %s", ctime(&fs.st_mtime));		// last modify
-			printf("last changed:  %s", ctime(&fs.st_ctime));		// last change
-			printf("permissions: %o\n", fs.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+			printf("last accessed: %s", ctime(&fs.st_atime));					// last access
+			printf("last modified: %s", ctime(&fs.st_mtime));					// last modify
+			printf("last changed:  %s", ctime(&fs.st_ctime));					// last change
+			printf("permissions: %o\n", fs.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));		// permissions
 	
 
 			// Print informations about the owner
