@@ -93,10 +93,10 @@ main(int argc, char **argv)
 			pwd=getpwuid(fs.st_uid);
 			grp=getgrgid(fs.st_gid);
 			printf("\n	-- owner information --\n");
-			printf("UID: %d (%s), GID: %d (%s)\n", fs.st_uid, pwd->pw_name, pwd->pw_gid, grp->gr_name);
-			printf("GEKOS field: %s\n", pwd->pw_gecos);
-			printf("home: %s\n", pwd->pw_dir);
-			printf("shell: %s\n", pwd->pw_shell);
+			printf("UID: %d (%s), GID: %d (%s)\n", fs.st_uid, pwd->pw_name, pwd->pw_gid, grp->gr_name); 	// uid, gid, username and group name
+			printf("GEKOS field: %s\n", pwd->pw_gecos);							// gekos field
+			printf("home: %s\n", pwd->pw_dir);								// home directory
+			printf("shell: %s\n", pwd->pw_shell);								// shell
 	
 		}
 
